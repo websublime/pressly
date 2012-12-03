@@ -12,5 +12,10 @@
 class Application {
 
 	const VERSION = '0.3';
+
+	public function __construct()
+	{
+
+	}
 }
 /* @end Application.php */
