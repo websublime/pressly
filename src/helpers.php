@@ -42,4 +42,27 @@ if(!function_exists('is_posts_page')){
 	}
 }
 
+/**
+ * Method to make our theme polyglot and add
+ * extra value to language.
+ */
+if(!function_exists('polyglot')){
+	function polyglot()
+	{
+		$path = THEMEPATH.'language';
+
+		load_theme_textdomain( strval(THEME), $path );
+
+		$locale = get_locale();
+
+		$locale_file = "languages/{$locale}.php";
+
+		$locale_functions = locate_template( array( $locale_file, "{$locale}.php" ) );
+
+		if ( !empty( $locale_functions ) && is_readable( $locale_functions ) ){
+			require_once( $locale_functions );
+		}
+	}
+}
+
 /* @end helpers.php */
